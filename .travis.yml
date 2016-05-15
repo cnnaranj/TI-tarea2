@@ -4,6 +4,7 @@ rvm:
 # uncomment and edit the following line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
 deploy:
+  skip_cleanup: true
   provider: heroku
   app: ti-tarea2
   api_key:
