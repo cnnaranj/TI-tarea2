@@ -26,9 +26,9 @@ class ApiController < ApplicationController
 				else
 
 					if data['videos']['standard_resolution']
-						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['videos']['standard_resolution']['url'] , :caption => data['caption']['text']
+						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['videos']['standard_resolution']['url'] , :caption => data['caption']['text']}
 					else
-						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['videos']['low_resolution'][, :version => @version}
+						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['videos']['low_resolution'][['url'] , :caption => data['caption']['text']}
 					end
 				end
 				@posts.push(@post)
