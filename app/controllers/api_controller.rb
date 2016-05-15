@@ -11,8 +11,9 @@ class ApiController < ApplicationController
 			@response= @instagram.get(params['tag'], 20)
 			@post={}
 			@posts=[]
-			@version="2.1.2"
+			@version="2.1.3"
 
+			
 			@response['data'].each do |data|
 				if data['type']=="image"
 					if data['images']['standard_resolution']
@@ -28,7 +29,7 @@ class ApiController < ApplicationController
 					if data['videos']['standard_resolution']
 						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['videos']['standard_resolution']['url'] , :caption => data['caption']['text']}
 					else
-						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['videos']['low_resolution'][['url'] , :caption => data['caption']['text']}
+						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['videos']['low_resolution']['url'] , :caption => data['caption']['text']}
 					end
 				end
 				@posts.push(@post)
