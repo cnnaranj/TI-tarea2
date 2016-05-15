@@ -11,7 +11,7 @@ class ApiController < ApplicationController
 			@response= @instagram.get(params['tag'], 20)
 			@post={}
 			@posts=[]
-			@version="0.1"
+			@version="1.0"
 
 			@response['data'].each do |data|
 				if data['type']=="image"
