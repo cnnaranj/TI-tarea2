@@ -11,31 +11,32 @@ class ApiController < ApplicationController
 			@response= @instagram.get(params['tag'], 20)
 			@post={}
 			@posts=[]
-			@version="1.1"
+			@version="2.1.3"
 
+			
 			@response['data'].each do |data|
 				if data['type']=="image"
 					if data['images']['standard_resolution']
-						@post= {:tags=> data['tags'], :username => data['user']['username'], :likes => data['likes']['count'], :url => data['images']['standard_resolution']['url'], :caption => data['caption']['text'], :version => @version}
+						@post= {:tags=> data['tags'], :username => data['user']['username'], :likes => data['likes']['count'], :url => data['images']['standard_resolution']['url'], :caption => data['caption']['text']}
 						
 					elsif  data['images']['low_resolution']
-						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['images']['low_resolution']['url'] , :caption => data['caption']['text'], :version => @version}
+						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['images']['low_resolution']['url'] , :caption => data['caption']['text']}
 					else
-						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['images']['thumbnail']['url'] , :caption => data['caption']['text'], :version => @version}
+						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['images']['thumbnail']['url'] , :caption => data['caption']['text']}
 					end	
 				else
 
 					if data['videos']['standard_resolution']
-						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['videos']['standard_resolution']['url'] , :caption => data['caption']['text'], :version => @version}
+						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['videos']['standard_resolution']['url'] , :caption => data['caption']['text']}
 					else
-						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['videos']['low_resolution']['url'] , :caption => data['caption']['text'], :version => @version}
+						@post= {:tags=> data['tags'], :username => data ['user']['username'], :likes => data ['likes']['count'], :url => data['videos']['low_resolution']['url'] , :caption => data['caption']['text']}
 					end
 				end
 				@posts.push(@post)
 							
 			end
 
-			render :status =>200, json: { metadata: { total: @metadata['data']['media_count']}, posts: @posts}
+			render :status =>200, json: { metadata: { total: @metadata['data']['media_count']}, posts: @posts, version: @version }
 		end
 
 	end
