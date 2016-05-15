@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+ - 2.2
+# uncomment and edit the following line if your project needs to run something other than `rake`:
+ script: bundle exec rake test
+deploy:
+  provider: heroku
+  app: ti-tarea2
+  api_key:
+    secure: "3a37b085-388b-4734-b52c-fe79219252f1"
