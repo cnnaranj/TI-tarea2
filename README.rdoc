@@ -1,1 +1,7 @@
-Version 1.1
+Version 1.1.1
+badges
+https://api.travis-ci.org/cnnaranj/TI-tarea2.svg?branch=master
+
+test realizados en test/controller/api_controller_test.rb
+finished in 0.72011s, 11.6272 runs/s, 11.6272 assertions/s
+2 runs, 2 assertions, 0 failures, 0 errors, 0 skips
